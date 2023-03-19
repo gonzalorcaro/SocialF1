@@ -1,0 +1,27 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-dark">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="150" height="50" role="img" aria-label="Mi imagen">
+            <image xlink:href="assets/images/F1Logo.png" width="150" height="50" alt="Logo" />
+        </svg>
+    </a>
+  
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 mx-3">
+      <li><a routerLink="/twitsF1" class="nav-link px-2 link-secondary">Inicio</a></li>
+      <li><a routerLink="/calendario" class="nav-link px-2 link-light">Calendario</a></li>
+      <li><a routerLink="/ultimaCarrera" class="nav-link px-2 link-light">Última carrera</a></li>
+      <li><a routerLink="/clasificacionPilotos" class="nav-link px-2 link-light">Clasificación</a></li>
+      <li><a routerLink="/social" class="nav-link px-2 link-light">Social</a></li>
+    </ul>
+  
+    <div *ngIf="!this.isLogged" class="col-md-3 text-end mx-5">
+      <a href="login" class="btn btn-outline-light me-2">Inicio de sesión</a>
+      <a href="registro" class="btn btn-light">Registro</a>
+    </div>
+
+    <div *ngIf="this.isLogged" class="col-md-3 text-end mx-5">
+      <a (click)="logout()" class="btn btn-danger me-2">Cerrar sesion</a>
+      
+    </div>
+</header>
+
+  

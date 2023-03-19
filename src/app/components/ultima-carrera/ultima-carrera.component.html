@@ -1,0 +1,30 @@
+<div class="container main-content">
+    <div *ngIf="loading">
+      Cargando los datos...
+    </div>
+    <div *ngIf="!loading">
+      <table class="table table-dark">
+        <thead>
+          <tr id="trThead">
+            <th scope="col">Pos.</th>
+            <th scope="col">Piloto</th>
+            <th scope="col">Escudería</th>
+            <th scope="col">Vueltas</th>
+            <th scope="col">Tiempo</th>
+            <th scope="col">Puntos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let piloto of resultadoCarrera">
+            <th scope="row">{{ piloto.position }}</th>
+            <td>{{ piloto.Driver.familyName }}</td>
+            <td><img class="logoPais" src="assets/escuderias/{{ piloto.Constructor.name }}.png" >{{ piloto.Constructor.name }}</td>
+            <td>{{ piloto.laps }}</td>
+            <td *ngIf="piloto.Time">{{ piloto.Time.time }}</td>
+            <td *ngIf="!piloto.Time">{{ piloto.status }}</td>
+            <td>{{ piloto.points }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

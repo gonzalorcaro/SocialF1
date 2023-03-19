@@ -1,0 +1,28 @@
+<div class="container main-content">
+    <div *ngIf="loading">
+      Cargando los datos...
+    </div>
+    <div *ngIf="!loading">
+      <table class="table table-dark">
+        <thead>
+          <tr id="trThead">
+            <th scope="col"></th>
+            <th scope="col">Gran Premio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">País</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let carrera of calendarioCarreras">
+            <th scope="row">{{ carrera.round }}</th>
+            <td>{{ carrera.raceName }}</td>
+            <td>{{ carrera.date | date:'dd/MM/yyyy' }}</td>
+            <td>{{ carrera.Circuit.Location.locality }}</td>
+            <td><img class="logoPais" src="assets/paises/{{ carrera.Circuit.Location.country }}.png" >{{ carrera.Circuit.Location.country }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
