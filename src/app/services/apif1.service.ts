@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class APIF1Service {
 
-  private apiUltimaCarrera = 'http://ergast.com/api/f1/current/last/results.json';
-  private apiCalendario = 'http://ergast.com/api/f1/current.json';
-  private apiClasfPiloto = 'http://ergast.com/api/f1/current/driverStandings.json';
-  private apiClasfConstructores = 'http://ergast.com/api/f1/current/constructorStandings.json';
+  private apiUltimaCarrera = 'https://ergast.com/api/f1/current/last/results.json';
+  private apiCalendario = 'https://ergast.com/api/f1/current.json';
+  private apiClasfPiloto = 'https://ergast.com/api/f1/current/driverStandings.json';
+  private apiClasfConstructores = 'https://ergast.com/api/f1/current/constructorStandings.json';
 
   constructor(private http: HttpClient) { }
 
