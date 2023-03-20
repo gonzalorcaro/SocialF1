@@ -11,7 +11,6 @@ export class APIF1Service {
   private apiClasfPiloto = 'http://ergast.com/api/f1/current/driverStandings.json';
   private apiClasfConstructores = 'http://ergast.com/api/f1/current/constructorStandings.json';
 
-
   constructor(private http: HttpClient) { }
 
   getCalendario() {
@@ -29,4 +28,5 @@ export class APIF1Service {
   getClasfConstructores() {
     return this.http.get(this.apiClasfConstructores);
   }
+
 }

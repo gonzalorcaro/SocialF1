@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IComentario } from 'src/app/interfaces/IComentario';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { ComentariosService } from 'src/app/services/comentarios.service';
 
 @Component({
   selector: 'app-social',
@@ -13,23 +14,36 @@ export class SocialComponent implements OnInit {
   mensaje: string = '';
   nombreUsuario!: string;
 
-  constructor(private SAuthentication: AuthServiceService) {
+  constructor(
+    private SAuthentication: AuthServiceService,
+    private SComentarios: ComentariosService
+  ) {
     this.nombreUsuario = this.SAuthentication.getUser();
   }
 
   ngOnInit(): void {
     this.isLogged = this.SAuthentication.isLoggedIn();
+
+    this.SComentarios.returnComments().subscribe(
+      (comentarios: Array<IComentario>) => {
+        this.comentarios = comentarios;
+        console.log(comentarios);
+        console.log(this.nombreUsuario);
+      }
+    );
   }
 
   addComment() {
-    let today = new Date();
-    let day = today.getDate().toString().padStart(2, "0"); 
-    let month = (today.getMonth() + 1).toString().padStart(2, "0"); 
-    let year = today.getFullYear().toString(); 
-    let formattedDate = `${day}/${month}/${year}`; 
+    let newComentario = {
+      nombre: this.nombreUsuario,
+      fecha: new Date().toISOString(),
+      mensaje: this.mensaje,
+    };
 
-    let newComentario = { nombre: this.nombreUsuario, fecha: formattedDate, mensaje: this.mensaje };
-
-    console.log(newComentario.fecha, newComentario.nombre, newComentario.mensaje);
+    this.SComentarios.addAndReturnCooment(newComentario).subscribe(
+      (comentarios: Array<IComentario>) => {
+        this.comentarios = comentarios;
+      }
+    );
   }
 }

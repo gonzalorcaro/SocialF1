@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SocialComponent } from './pages/social/social.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { ComentarioComponent } from './components/comentario/comentario.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
     TwitsF1Component,
     LoginComponent,
     SocialComponent,
-    RegistroComponent,
-    ComentarioComponent,
+    RegistroComponent
 
   ],
   imports: [
